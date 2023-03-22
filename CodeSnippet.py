@@ -11,12 +11,12 @@ class CodeSnippet(ProgrammingLanguage):
         self.__code = self.read_file()
         self.__language = self.get_language()
 
-    def get_string(self):
+    def get_strings(self):
         code_string_list = str(self.__code).split()
         return code_string_list
 
     def __len__(self):
-        return len(self.get_string())
+        return len(self.get_strings())
 
     def get_len_method(self):
         return len(self.get_method())
@@ -25,7 +25,7 @@ class CodeSnippet(ProgrammingLanguage):
         code = self.__code
         return code
     
-    def get_method(self):       #return all the methods and functions in the code
+    def get_methods(self):       #return all the methods and functions in the code
         list_method = []
         for i in dir(self):
             list_method.append(i)

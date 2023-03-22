@@ -1,4 +1,6 @@
 from CodeSnippet import *
+from abc import ABC, abstractmethod
+
 # Dictionary các từ khoá có sẵn trong các ngôn ngữ lập trình
 dict = {"py": ["class", "def", "if", "else", "is", "not", "for", "while",\
                 "import", "print", "True", "False", "and", "or", "as",\
@@ -27,9 +29,8 @@ dict = {"py": ["class", "def", "if", "else", "is", "not", "for", "while",\
                ]}
 
 class Checker:
-    '''
-    So sánh CodeSnippet2, lấy CodeSnippet1 làm gốc
-    '''
+    ###
+    '''So sánh CodeSnippet2, lấy CodeSnippet1 làm gốc'''
     def __init__(self, threshold, snippet1, snippet2):
         self.threhold = threshold
         self.snippet1 = snippet1
@@ -47,29 +48,29 @@ class Checker:
 
 
 class Checker_by_Word(Checker):
-    '''
-    So sánh bằng cách đếm số chữ giống nhau giữa 2 CodeSnippet, Loại bỏ các từ khoá có sẵn trong ngôn ngữ lập trình.
+    '''So sánh bằng cách đếm số từ giống nhau giữa 2 CodeSnippet,
+    Loại bỏ các từ khoá có sẵn trong ngôn ngữ lập trình.
     '''
     def __init__(self, threshold, snippet1, snippet2):
         super().__init__(threshold, snippet1, snippet2)
 
     def check_similarity(self):
         count = 0
-        lens = len(self.snippet2.get_string())
+        lens = len(self.snippet2.get_strings())
         if self.snippet1.get_language() != self.snippet2.get_language():
             print("The 2 codes are different in language. They can't check similarity")
         else:
-            for i in self.snippet2.get_string():
+            for i in self.snippet2.get_strings():
                 if i in dict[snippet1.get_language()]:
                     lens -= 1
-                elif i in self.snippet1.get_string():
+                elif i in self.snippet1.get_strings():
                     count +=1
         scale = count/lens
 
         self.show_result(scale)
 class Checker_by_Function(Checker):
     '''
-    So sánh bằng cách đếm số hàm tương tự nhau được sử dụng trong Code
+    So sánh bằng cách đếm số properties và methods tương tự nhau được sử dụng trong Code
     '''
     def __init__(self, threshold, snippet1, snippet2):
         super().__init__(threshold, snippet1, snippet2)
@@ -79,10 +80,10 @@ class Checker_by_Function(Checker):
         if self.snippet1.get_language() != self.snippet2.get_language():
             print("The 2 codes are different in language. They can't check similarity")
         else:
-            for i in self.snippet2.get_method():
-                if i in self.snippet1.get_method():
+            for i in self.snippet2.get_methods():
+                if i in self.snippet1.get_methods():
                     count +=1
-        scale = count/len(self.snippet2.get_method())
+        scale = count/len(self.snippet2.get_methods())
 
         self.show_result(scale)
 
