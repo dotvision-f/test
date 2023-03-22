@@ -39,3 +39,4 @@ Task: Compare by counting the number of similar properties and methods between 2
 - *CodeSimilarityChecker.py*: stores class **Checker**, **Checker_by_Word**, **Checker_by_Function**
 - *test.py*: testy code. Check the similarity between code1.py and code2.py
 - *main.py*: The tool's command line interface
+- *code1.py* and *code2.py*: 2 example codes used for comparison
