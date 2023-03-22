@@ -9,7 +9,6 @@
 ## Classes in project
 - Class **ProgrammingLanguage**:
 ```
-Input: code file's name, with extension.
 Task: save the file name, extract the programming language of the code
 ```
 
@@ -20,9 +19,6 @@ Task: Get lists of words or methods
 
 - Class **Checker**: Compare 2 codes, take Code 1 as root
 ```
-Input:  threshold: threshold for accepting similarity
-        snippet1: Object CodeSnippet của code 1
-        snippet2: Object CodeSnippet của code 2
 Task: Compare 2 codes and show the result
 ```
 
