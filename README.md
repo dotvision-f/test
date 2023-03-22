@@ -6,7 +6,7 @@
     Nguyễn Ngọc Tú
     Nguyễn Duy Anh
 
-## Class in project
+## Classes in project
 - Class **ProgrammingLanguage**:
 ```
 Input: code file's name, with extension.
